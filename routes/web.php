@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 
 // Routes admin
@@ -27,21 +25,27 @@ Route::group([
 ], function(){
 
 	// Authentication Routes...
-	Route::group(['middleware' => 'can:admin'], function(){
+	Route::group(['middleware' => ['isVerified', 'can:admin']], function(){
 		Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 		Route::get('dashboard', function(){
 			return view("admin.dashboard");
 		});
+		Route::resource('users', 'UsersController');
 	});
-	
+
 	Route::post('login', 'Auth\LoginController@login');
 	Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-    
-});
 
+});
+Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('login');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::get('email-verification/error', 'EmailVerificationController@getVerificationError')->name('email-verification.error');
+Route::get('email-verification/check/{token}', 'EmailVerificationController@getVerification')->name('email-verification.check');
+
+

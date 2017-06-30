@@ -43,9 +43,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="{{ Request::routeIs('admin.users.index') ? 'active' :'' }}"><a href="{{ route('admin.users.index') }}">Usuários</a></li>
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -76,7 +75,11 @@
                 </div>
             </div>
         </nav>
-
+        @if(Session::has('message'))
+            <div class="container">
+                {!! Alert::success(Session::get('message'))->close() !!}
+            </div>
+        @endif
         @yield('content')
     </div>
 
