@@ -3,7 +3,7 @@
 namespace CodeFlix\Http\Controllers;
 
 use CodeFlix\Repositories\UserRepository;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Jrean\UserVerification\Traits\VerifiesUsers;
 
 class EmailVerificationController extends Controller
@@ -32,6 +32,7 @@ class EmailVerificationController extends Controller
     protected function loginUser()
     {
         $email = \Request::get('email');
-        $user = $this->repository->findByField('email', $email);
+        $user = $this->repository->findByField('email', $email)->first();
+        \Auth::login($user);
     }
 }
