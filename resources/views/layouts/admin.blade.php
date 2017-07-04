@@ -44,6 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li class="{{ Request::routeIs('admin.users.index') ? 'active' :'' }}"><a href="{{ route('admin.users.index') }}">Usuários</a></li>
+                        <li class="{{ Request::routeIs('admin.categories.index') ? 'active' :'' }}"><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

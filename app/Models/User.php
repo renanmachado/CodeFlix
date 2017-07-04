@@ -27,6 +27,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $verified
+ * @property string|null $verification_token
+ * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\User whereVerificationToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\User whereVerified($value)
  */
 class User extends Authenticatable implements TableInterface
 {
