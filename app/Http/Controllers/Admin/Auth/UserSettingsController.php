@@ -35,7 +35,7 @@ class UserSettingsController extends Controller
     {
         /** @var Form $form */
         $form = FormBuilder::create(UserSettingsForm::class, [
-            'url' => route('admin.users_settings.update'),
+            'url' => route('admin.user_settings.update'),
             'method' => 'PUT'
         ]);
 
@@ -46,7 +46,7 @@ class UserSettingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @return $this|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {
@@ -61,6 +61,6 @@ class UserSettingsController extends Controller
         $this->repository->update($data, Auth::user()->id);
         $request->session()->flash('message', 'Senha alterada com sucesso');
 
-        return redirect()->route('admin.users_settings.edit');
+        return redirect()->route('admin.user_settings.edit');
     }
 }

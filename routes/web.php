@@ -30,10 +30,11 @@ Route::group([
 		Route::get('dashboard', function(){
 			return view("admin.dashboard");
 		});
-		Route::get('users/settings', 'Auth\UserSettingsController@edit')->name('users_settings.edit');
-        Route::put('users/settings', 'Auth\UserSettingsController@update')->name('users_settings.update');
+		Route::get('user/settings', 'Auth\UserSettingsController@edit')->name('user_settings.edit');
+        Route::put('user/settings', 'Auth\UserSettingsController@update')->name('user_settings.update');
 		Route::resource('users', 'UsersController');
         Route::resource('categories', 'CategoriesController');
+        Route::resource('series', 'SeriesController');
 	});
 
 	Route::post('login', 'Auth\LoginController@login');

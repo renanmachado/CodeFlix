@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h3>Editar meu perfil</h3>
-            <?php $icon = Icon::create('floppy-disk'); ?>
+            <h3>Editar série</h3>
+            <?php $icon = Icon::create('pencil'); ?>
 
             {!!
                 form($form->add('salvar', 'submit', [

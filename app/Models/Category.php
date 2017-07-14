@@ -11,6 +11,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @mixin \Eloquent
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\CodeFlix\Models\Category whereUpdatedAt($value)
  */
 class Category extends Model implements TableInterface
 {
