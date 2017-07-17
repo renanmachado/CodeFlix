@@ -14,10 +14,12 @@ class VideosTableSeeder extends Seeder
     {
         /** @var Collection $series */
         $series = \CodeFlix\Models\Serie::all();
+        $categories = \CodeFlix\Models\Category::all();
         $series->random();
             factory(\CodeFlix\Models\Video::class, 100)
                 ->create()
-                ->each(function ($video) use($series) {
+                ->each(function ($video) use($series,$categories) {
+                    $video->categories()->attach($categories->random(4)->pluck('id'));
                     $num = rand(1,3);
                     if ($num%2==0){
                         $serie = $series->random();
